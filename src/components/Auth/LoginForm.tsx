@@ -12,8 +12,8 @@ import {
 import { useAuthStore } from "../../store/auth.store";
 
 export default function LoginForm() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("Md Anas Sabah");
+  const [password, setPassword] = useState("Md Anas Sabah");
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const login = useAuthStore((state) => state.login);

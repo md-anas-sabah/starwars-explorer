@@ -15,7 +15,7 @@ export const useAuthStore = create(
       user: null,
       login: async (username: string, password: string) => {
         // Mock authentication - in real app, call API
-        if (username === "demo" && password === "demo") {
+        if (username === "Md Anas Sabah" && password === "Md Anas Sabah") {
           set({ isAuthenticated: true, user: { username } });
           return true;
         }
