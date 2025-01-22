@@ -1,10 +1,21 @@
-import { AppShell, Header, Group, Button, Text } from "@mantine/core";
+import {
+  AppShell,
+  Header,
+  Group,
+  Button,
+  Text,
+  ActionIcon,
+  useMantineColorScheme,
+} from "@mantine/core";
+import { FaMoon } from "react-icons/fa";
+import { LuSun } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/auth.store";
 
 export default function Shell({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
   const { isAuthenticated, user, logout } = useAuthStore();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   const handleLogout = () => {
     logout();
@@ -26,6 +37,18 @@ export default function Shell({ children }: { children: React.ReactNode }) {
               Star Wars Explorer
             </Text>
             <Group>
+              <ActionIcon
+                variant="outline"
+                color={colorScheme === "dark" ? "yellow" : "blue"}
+                onClick={() => toggleColorScheme()}
+                title="Toggle color scheme"
+              >
+                {colorScheme === "dark" ? (
+                  <LuSun size={18} />
+                ) : (
+                  <FaMoon size={18} />
+                )}
+              </ActionIcon>
               {isAuthenticated ? (
                 <>
                   <Text>Welcome, {user?.username}</Text>
