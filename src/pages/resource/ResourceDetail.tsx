@@ -76,7 +76,31 @@ export default function ResourceDetail() {
     enabled: !!character?.films,
   });
 
-  if (characterLoading) return <Loader />;
+  if (characterLoading)
+    return (
+      <div
+        style={{
+          height: "100vh",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "linear-gradient(45deg, #000000 0%, #1a1a1a 100%)",
+          gap: "1rem",
+        }}
+      >
+        <Text
+          size={42}
+          weight={700}
+          variant="gradient"
+          gradient={{ from: "yellow", to: "orange", deg: 45 }}
+        >
+          STAR WARS
+        </Text>
+        <Loader color="yellow" size="xl" variant="bars" />
+      </div>
+    );
 
   return (
     <Container size="xl">

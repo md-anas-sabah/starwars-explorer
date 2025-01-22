@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
 import {
   Container,
   Table,
@@ -14,6 +13,7 @@ import {
   Loader,
   Text,
 } from "@mantine/core";
+import { FaSearch } from "react-icons/fa";
 
 interface Character {
   name: string;
@@ -37,7 +37,31 @@ export default function ResourceList() {
     queryFn: fetchCharacters,
   });
 
-  if (isLoading) return <Loader />;
+  if (isLoading)
+    return (
+      <div
+        style={{
+          height: "100vh",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "linear-gradient(45deg, #000000 0%, #1a1a1a 100%)",
+          gap: "1rem",
+        }}
+      >
+        <Text
+          size={42}
+          weight={700}
+          variant="gradient"
+          gradient={{ from: "yellow", to: "orange", deg: 45 }}
+        >
+          STAR WARS
+        </Text>
+        <Loader color="yellow" size="xl" variant="bars" />
+      </div>
+    );
   if (error) return <Text>Error loading characters</Text>;
 
   const filteredCharacters = data?.results.filter((char: Character) => {
