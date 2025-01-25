@@ -1,0 +1,149 @@
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  
+  .blur {
+    filter: blur(4px);
+    opacity: 0.3;
+    transition: all 0.5s ease;
+  }
+  
+  .tiny-yoda {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.5s ease;
+    
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    &.hide {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+  
+    .message-bubble {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 20px;
+      width: 300px;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 10px 10px 0;
+        border-style: solid;
+        border-color: rgba(255, 255, 255, 0.95) transparent transparent;
+      }
+  
+      .message-text {
+        animation: fadeInOut 3s ease;
+        font-size: 1.1rem;
+        line-height: 1.4;
+        color: #333;
+      }
+    }
+  
+    .head {
+      background: #9ed290;
+      width: 70px;
+      height: 50px;
+      border-radius: 50%;
+      position: relative;
+      margin: 0 auto;
+      border: 2px solid #54875b;
+  
+      .ears-div {
+        position: absolute;
+        width: 100%;
+        animation: wiggle 3s infinite;
+      }
+  
+      .ears li {
+        width: 35px;
+        height: 25px;
+        background: #9ed290;
+        position: absolute;
+        top: -10px;
+        border: 2px solid #54875b;
+        border-radius: 50%;
+        list-style: none;
+  
+        &:first-child {
+          left: -25px;
+          transform: rotate(-30deg);
+        }
+  
+        &:last-child {
+          right: -25px;
+          transform: rotate(30deg);
+        }
+      }
+  
+      .eyes-div {
+        position: relative;
+        top: 20px;
+      }
+  
+      .eyes li {
+        width: 10px;
+        height: 10px;
+        background: #000;
+        position: absolute;
+        border-radius: 50%;
+        list-style: none;
+  
+        &:first-child {
+          left: 20px;
+        }
+  
+        &:last-child {
+          right: 20px;
+        }
+      }
+    }
+  
+    .body {
+      width: 50px;
+      height: 60px;
+      margin: 5px auto 0;
+      background: #a5867a;
+      border-radius: 25px;
+      border: 2px solid #724b4c;
+    }
+  }
+  
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(10px); }
+  }
