@@ -1,0 +1,161 @@
+/* src/styles/starwars.scss */
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap");
+
+:root {
+  --sw-yellow: #ffe81f;
+  --sw-blue: #4bd5ee;
+}
+
+/* Custom Cursor */
+body {
+  cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 2L19 29M16 2L13 29M16 2V29M13 29H19' stroke='%23FFE81F' stroke-width='2'/%3E%3C/svg%3E")
+      16 16,
+    auto !important;
+}
+
+/* Glow Effects */
+.sw-glow {
+  text-shadow: 0 0 10px var(--sw-yellow);
+}
+
+.sw-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid var(--sw-yellow);
+  background: transparent;
+  color: var(--sw-yellow);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--sw-yellow);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: #000;
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+/* Table Styles */
+.sw-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  overflow: hidden;
+
+  th {
+    background: rgba(255, 232, 31, 0.1);
+    color: var(--sw-yellow);
+    font-family: "Orbitron", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem;
+    border-bottom: 2px solid var(--sw-yellow);
+  }
+
+  td {
+    text-align: center;
+    padding: 1rem;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 232, 31, 0.1);
+  }
+
+  tbody tr {
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 232, 31, 0.05);
+      transform: scale(1.01);
+    }
+  }
+}
+
+/* Card Styles */
+.sw-card {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 232, 31, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 232, 31, 0.1);
+  }
+}
+
+/* Input Styles */
+.sw-input {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(255, 232, 31, 0.3);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: var(--sw-yellow);
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.2);
+  }
+}
+
+/* Animation for elements appearing */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sw-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Hologram effect */
+.sw-hologram {
+  position: relative;
+  color: var(--sw-blue);
+  text-shadow: 0 0 8px var(--sw-blue);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      transparent 0%,
+      rgba(75, 213, 238, 0.2) 50%,
+      transparent 100%
+    );
+    animation: hologram 2s linear infinite;
+  }
+}
+
+@keyframes hologram {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}

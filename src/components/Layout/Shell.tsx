@@ -33,11 +33,15 @@ export default function Shell({ children }: { children: React.ReactNode }) {
               weight={700}
               sx={{ cursor: "pointer" }}
               onClick={() => navigate("/")}
+              style={{
+                color: "var(--sw-yellow)",
+                fontFamily: "Orbitron, sans-serif",
+              }}
             >
               Star Wars Explorer
             </Text>
             <Group>
-              <ActionIcon
+              {/* <ActionIcon
                 variant="outline"
                 color={colorScheme === "dark" ? "yellow" : "blue"}
                 onClick={() => toggleColorScheme()}
@@ -48,7 +52,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
                 ) : (
                   <FaMoon size={18} />
                 )}
-              </ActionIcon>
+              </ActionIcon> */}
               {isAuthenticated ? (
                 <>
                   <Text>Welcome, {user?.username}</Text>

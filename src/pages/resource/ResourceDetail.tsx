@@ -3,16 +3,16 @@ import { useQuery } from "@tanstack/react-query";
 import {
   Container,
   Grid,
-  Paper,
   Text,
   Title,
   Group,
-  Button,
   Loader,
   Stack,
   Badge,
+  Box,
 } from "@mantine/core";
 import { FaArrowLeft } from "react-icons/fa";
+import SpaceBackground from "../../components/UI/SpaceBackground";
 
 interface Character {
   name: string;
@@ -86,15 +86,15 @@ export default function ResourceDetail() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(45deg, #000000 0%, #1a1a1a 100%)",
+          background: "black",
           gap: "1rem",
         }}
       >
         <Text
           size={42}
           weight={700}
-          variant="gradient"
-          gradient={{ from: "yellow", to: "orange", deg: 45 }}
+          className="sw-glow"
+          sx={{ color: "var(--sw-yellow)" }}
         >
           STAR WARS
         </Text>
@@ -103,113 +103,221 @@ export default function ResourceDetail() {
     );
 
   return (
-    <Container size="xl">
-      <Group position="apart" mb="xl">
-        <Button
-          leftIcon={<FaArrowLeft size={14} />}
-          variant="light"
-          onClick={() => navigate("/resources")}
-        >
-          Back to List
-        </Button>
-      </Group>
+    <Box
+      className="sw-fade-in"
+      sx={{
+        minHeight: "100vh",
+        background: "black",
+        position: "relative",
+        paddingBottom: "2rem",
+      }}
+    >
+      <SpaceBackground />
+      <Container size="xl" sx={{ position: "relative", paddingTop: "2rem" }}>
+        <Group position="apart" mb="xl">
+          <button
+            className="sw-button"
+            onClick={() => navigate("/resources")}
+            style={{
+              padding: "0.5rem 1rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+            }}
+          >
+            <FaArrowLeft size={14} />
+            Back to List
+          </button>
+        </Group>
 
-      <Grid>
-        <Grid.Col md={8}>
-          <Paper p="xl" withBorder>
-            <Title order={2} mb="xl">
-              {character.name}
-            </Title>
+        <Grid>
+          <Grid.Col md={8}>
+            <div className="sw-card">
+              <Title
+                order={2}
+                mb="xl"
+                className="sw-glow"
+                sx={{
+                  color: "var(--sw-yellow)",
+                  fontFamily: "Orbitron, sans-serif",
+                }}
+              >
+                {character.name}
+              </Title>
 
-            <Grid>
-              <Grid.Col span={6}>
-                <Stack spacing="xs">
-                  <Text weight={500}>Height</Text>
-                  <Text>{character.height} cm</Text>
-
-                  <Text weight={500} mt="md">
-                    Mass
-                  </Text>
-                  <Text>{character.mass} kg</Text>
-
-                  <Text weight={500} mt="md">
-                    Birth Year
-                  </Text>
-                  <Text>{character.birth_year}</Text>
-                </Stack>
-              </Grid.Col>
-
-              <Grid.Col span={6}>
-                <Stack spacing="xs">
-                  <Text weight={500}>Hair Color</Text>
-                  <Text>{character.hair_color}</Text>
-
-                  <Text weight={500} mt="md">
-                    Eye Color
-                  </Text>
-                  <Text>{character.eye_color}</Text>
-
-                  <Text weight={500} mt="md">
-                    Gender
-                  </Text>
-                  <Text>{character.gender}</Text>
-                </Stack>
-              </Grid.Col>
-            </Grid>
-          </Paper>
-        </Grid.Col>
-
-        <Grid.Col md={4}>
-          <Paper p="xl" withBorder>
-            <Title order={3} mb="xl">
-              Homeworld
-            </Title>
-            {homeworldLoading ? (
-              <Loader size="sm" />
-            ) : (
-              <Stack spacing="xs">
-                <Text weight={500}>Name</Text>
-                <Text>{homeworld?.name}</Text>
-
-                <Text weight={500} mt="md">
-                  Climate
-                </Text>
-                <Text>{homeworld?.climate}</Text>
-
-                <Text weight={500} mt="md">
-                  Terrain
-                </Text>
-                <Text>{homeworld?.terrain}</Text>
-
-                <Text weight={500} mt="md">
-                  Population
-                </Text>
-                <Text>{homeworld?.population}</Text>
-              </Stack>
-            )}
-          </Paper>
-
-          <Paper p="xl" withBorder mt="md">
-            <Title order={3} mb="xl">
-              Films
-            </Title>
-            {filmsLoading ? (
-              <Loader size="sm" />
-            ) : (
-              <Stack spacing="md">
-                {films?.map((film: Film) => (
-                  <Group key={film.title}>
-                    <Badge size="lg">{film.title}</Badge>
-                    <Text size="sm" color="dimmed">
-                      {film.release_date}
+              <Grid>
+                <Grid.Col span={6}>
+                  <Stack spacing="xs">
+                    <Text
+                      weight={500}
+                      className="sw-glow"
+                      sx={{ color: "var(--sw-yellow)" }}
+                    >
+                      Height
                     </Text>
-                  </Group>
-                ))}
-              </Stack>
-            )}
-          </Paper>
-        </Grid.Col>
-      </Grid>
-    </Container>
+                    <Text sx={{ color: "#fff" }}>{character.height} cm</Text>
+
+                    <Text
+                      weight={500}
+                      mt="md"
+                      className="sw-glow"
+                      sx={{ color: "var(--sw-yellow)" }}
+                    >
+                      Mass
+                    </Text>
+                    <Text sx={{ color: "#fff" }}>{character.mass} kg</Text>
+
+                    <Text
+                      weight={500}
+                      mt="md"
+                      className="sw-glow"
+                      sx={{ color: "var(--sw-yellow)" }}
+                    >
+                      Birth Year
+                    </Text>
+                    <Text sx={{ color: "#fff" }}>{character.birth_year}</Text>
+                  </Stack>
+                </Grid.Col>
+
+                <Grid.Col span={6}>
+                  <Stack spacing="xs">
+                    <Text
+                      weight={500}
+                      className="sw-glow"
+                      sx={{ color: "var(--sw-yellow)" }}
+                    >
+                      Hair Color
+                    </Text>
+                    <Text sx={{ color: "#fff" }}>{character.hair_color}</Text>
+
+                    <Text
+                      weight={500}
+                      mt="md"
+                      className="sw-glow"
+                      sx={{ color: "var(--sw-yellow)" }}
+                    >
+                      Eye Color
+                    </Text>
+                    <Text sx={{ color: "#fff" }}>{character.eye_color}</Text>
+
+                    <Text
+                      weight={500}
+                      mt="md"
+                      className="sw-glow"
+                      sx={{ color: "var(--sw-yellow)" }}
+                    >
+                      Gender
+                    </Text>
+                    <Text sx={{ color: "#fff" }}>{character.gender}</Text>
+                  </Stack>
+                </Grid.Col>
+              </Grid>
+            </div>
+          </Grid.Col>
+
+          <Grid.Col md={4}>
+            <div className="sw-card">
+              <Title
+                order={3}
+                mb="xl"
+                className="sw-glow"
+                sx={{
+                  color: "var(--sw-yellow)",
+                  fontFamily: "Orbitron, sans-serif",
+                }}
+              >
+                Homeworld
+              </Title>
+              {homeworldLoading ? (
+                <Loader color="yellow" size="sm" />
+              ) : (
+                <Stack spacing="xs">
+                  <Text
+                    weight={500}
+                    className="sw-glow"
+                    sx={{ color: "var(--sw-yellow)" }}
+                  >
+                    Name
+                  </Text>
+                  <Text sx={{ color: "#fff" }}>{homeworld?.name}</Text>
+
+                  <Text
+                    weight={500}
+                    mt="md"
+                    className="sw-glow"
+                    sx={{ color: "var(--sw-yellow)" }}
+                  >
+                    Climate
+                  </Text>
+                  <Text sx={{ color: "#fff" }}>{homeworld?.climate}</Text>
+
+                  <Text
+                    weight={500}
+                    mt="md"
+                    className="sw-glow"
+                    sx={{ color: "var(--sw-yellow)" }}
+                  >
+                    Terrain
+                  </Text>
+                  <Text sx={{ color: "#fff" }}>{homeworld?.terrain}</Text>
+
+                  <Text
+                    weight={500}
+                    mt="md"
+                    className="sw-glow"
+                    sx={{ color: "var(--sw-yellow)" }}
+                  >
+                    Population
+                  </Text>
+                  <Text sx={{ color: "#fff" }}>{homeworld?.population}</Text>
+                </Stack>
+              )}
+            </div>
+
+            <div className="sw-card" style={{ marginTop: "1rem" }}>
+              <Title
+                order={3}
+                mb="xl"
+                className="sw-glow"
+                sx={{
+                  color: "var(--sw-yellow)",
+                  fontFamily: "Orbitron, sans-serif",
+                }}
+              >
+                Films
+              </Title>
+              {filmsLoading ? (
+                <Loader color="yellow" size="sm" />
+              ) : (
+                <Stack spacing="md">
+                  {films?.map((film: Film) => (
+                    <div
+                      key={film.title}
+                      className="sw-card"
+                      style={{
+                        padding: "0.5rem",
+                        marginBottom: "0.5rem",
+                        border: "1px solid rgba(255, 232, 31, 0.2)",
+                      }}
+                    >
+                      <Text
+                        sx={{ color: "var(--sw-yellow)" }}
+                        size="lg"
+                        weight={500}
+                      >
+                        {film.title}
+                      </Text>
+                      <Text sx={{ color: "#fff" }} size="sm">
+                        {film.release_date}
+                      </Text>
+                    </div>
+                  ))}
+                </Stack>
+              )}
+            </div>
+          </Grid.Col>
+        </Grid>
+      </Container>
+    </Box>
   );
 }
