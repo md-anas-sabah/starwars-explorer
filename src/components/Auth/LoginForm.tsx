@@ -43,6 +43,7 @@ export default function LoginForm() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            styles={{ input: { backgroundColor: "black", color: "white" } }}
           />
           <PasswordInput
             label="Password"
@@ -51,6 +52,12 @@ export default function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
             required
             mt="md"
+            styles={{
+              input: {
+                backgroundColor: "black",
+                color: "white",
+              },
+            }}
           />
           {error && (
             <Text c="red" size="sm" mt="sm">
